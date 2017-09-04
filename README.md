@@ -15,6 +15,51 @@
 
 A:可以试着关闭某一台服务器其他的二台服务器依然能够为ribbon客户端提供服务工作
 
+B:eureka主配置文件:
+  spring:
+  application:
+    name: microservice-eureka-server
+  profiles:
+    active: peer1
+---
+spring:
+  profiles: peer1
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: eureka-server-peer1
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server-peer2:8762/eureka/,http://eureka-server-peer3:8763/eureka/
+
+---
+spring:
+  profiles: peer2
+server:
+  port: 8762
+eureka:
+  instance:
+    hostname: eureka-server-peer2
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server-peer1:8761/eureka/,http://eureka-server-peer3:8763/eureka/
+
+---
+spring:
+  profiles: peer3
+server:
+  port: 8763
+eureka:
+  instance:
+    hostname: eureka-server-peer3
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server-peer1:8761/eureka/,http://eureka-server-peer2:8762/eureka/
+
+
+
+
 备注:后期会完善spring config 的集成 以及redis的集成 和分布式事物的集成
 
 QQ:1317350817

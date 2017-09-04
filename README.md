@@ -1,4 +1,4 @@
-# could_parent &杜建峰
+# could_parent 高可用微服务架构&杜建峰
 该项目利用当下流行的spring cloud 实现了高可用分布式微服务
 
 启动流程:
@@ -16,6 +16,7 @@
 A:可以试着关闭某一台服务器其他的二台服务器依然能够为ribbon客户端提供服务工作
 
 B:eureka主配置文件:
+
   spring:
   application:
     name: microservice-eureka-server

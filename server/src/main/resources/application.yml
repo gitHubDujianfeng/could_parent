@@ -1,0 +1,9 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server-peer1:8761/eureka/,http://eureka-server-peer2:8762/eureka/,http://eureka-server-peer3:8763/eureka/
+server:
+  port: 9998
+spring:
+  application:
+    name: spring-cloud-server1

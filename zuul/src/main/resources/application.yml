@@ -1,0 +1,21 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server-peer1:8761/eureka/,http://eureka-server-peer2:8762/eureka/,http://eureka-server-peer3:8763/eureka/
+  instance:
+    hostname: cloud-zuul
+server:
+  port: 8086
+spring:
+  application:
+    name: spring-cloud-zuul
+zuul:
+  routes:
+    api-a:
+      path: /dujianfeng2/**
+      serviceId: spring-cloud-server1
+    api-b:
+      path: /api2/**
+      serviceId: spring-cloud-server2
+
+
